@@ -1,0 +1,43 @@
+@import "material-icons/iconfont/material-icons.css";
+
+.card-container {
+  position: relative;
+  height: 500px;
+  width: 350px;
+  border: 2px solid green;
+
+  .material-icons-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+  }
+
+  .card-img {
+    height: 200px;
+    width: 100%;
+    border: 2px solid green;
+  }
+
+  .card-data-container {
+    height: 296px;
+    width: 100%;
+    padding: 20px;
+    background-color: #9ff5d4;
+
+    .card-data {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+    tr,
+    td {
+      padding: 8px;
+      border: 2px solid grey;
+    }
+  }
+}
