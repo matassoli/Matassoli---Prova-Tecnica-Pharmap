@@ -1,0 +1,9 @@
+<section>
+    <h4>Inserisci prodotto</h4>
+    <div class="searchCointainer">
+        <ng-select notFoundText="Nessun elemento trovato" clearAllText="Rimuovi" [clearable]="false" [hideSelected]=true
+            (change)="selectedValue(selected)" (open)="emptyOption()" [(ngModel)]="selected">
+            <ng-option *ngFor="let item of filterEmptyValues()">{{item.generic_name_it}}</ng-option>
+        </ng-select>
+    </div>
+</section>

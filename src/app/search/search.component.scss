@@ -1,0 +1,40 @@
+section {
+  margin: 100px 50px;
+
+  .searchCointainer {
+    width: 400px;
+    border: 3px solid rgb(206, 206, 206);
+    border-radius: 3px;
+
+    ng-select {
+      padding: 10px 0;
+      .ng-dropdown-panel {
+        color: black;
+        margin: 15px 0;
+        border: 3px solid rgb(206, 206, 206);
+      }
+
+      .ng-option {
+        padding: 15px;
+        &:hover {
+          color: rgb(68, 0, 255);
+          border-left: 5px solid rgb(68, 0, 255);
+        }
+        &-label {
+          padding-left: 10%;
+        }
+      }
+
+      .ng-input {
+        padding-left: 10px;
+        height: 50px;
+      }
+      .ng-value {
+        padding-left: 10px;
+      }
+      .ng-clear-wrapper {
+        color: red;
+      }
+    }
+  }
+}
