@@ -1,44 +1,43 @@
 <section>
 
-    <div class="card-container">
-        <div class="material-icons-container">
-            <span class="material-icons" style="color: red;">star</span>
-            <span class="material-icons" style="color: purple;">delete</span>
-        </div>
-        <div class="card-img"></div>
-        <div class="card-data-container">
-            <div class="card-data">
-                <table cellspacing="0" cellpadding="0">
-                    <tr>
-                        <td width="70%">Zucchero</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <td>Sodio</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <td>Sale</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <td>Grassi</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <td>Carboidrati</td>
-                        <td>99</td>
-                    </tr>
-                    <tr>
-                        <td>Calorie</td>
-                        <td>99</td>
-                    </tr>
 
-                </table>
+    <ng-container *ngFor="let card of dataCards">
+        <div class="card-container" *ngIf="card?.abbreviated_product_name">
+            <div class="material-icons-container">
+                <span class="material-icons" style="color: red;">star</span>
+                <span class="material-icons" style="color: purple;">delete</span>
             </div>
+            <div class="card-img"><img src={{card?.image_url}} alt=""></div>
+            <div class="card-data-container">
+                <div class="card-data">
+                    <h1>{{card?.abbreviated_product_name}}</h1>
+                    <table cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="70%">Zucchero</td>
+                            <td>{{card?.nutriments?.sugars_100g}} g</td>
+                        </tr>
+                        <tr>
+                            <td>Sodio</td>
+                            <td>{{card?.nutriments?.sodium_100g}} g</td>
+                        </tr>
+                        <tr>
+                            <td>Sale</td>
+                            <td>{{card?.nutriments?.salt_100g}} g</td>
+                        </tr>
+                        <tr>
+                            <td>Grassi</td>
+                            <td>{{card?.nutriments?.fat_100g}} g</td>
+                        </tr>
+                        <tr>
+                            <td>Carboidrati</td>
+                            <td>{{card?.nutriments?.carbohydrates_100g}} g</td>
+                        </tr>
+                    </table>
+                </div>
 
+            </div>
         </div>
-    </div>
+    </ng-container>
 
 
 </section>

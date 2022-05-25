@@ -10,11 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-    CardComponent
-  ],
+  declarations: [AppComponent, SearchComponent, CardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +19,6 @@ import { CardComponent } from './card/card.component';
     FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
