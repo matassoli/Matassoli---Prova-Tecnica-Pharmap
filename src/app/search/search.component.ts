@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { OpenFoodService } from '../services/openfood.service';
 
 @Component({
@@ -12,7 +18,8 @@ export class SearchComponent implements OnInit {
 
   public foodList: any;
   public selected = '';
-  public selectedData: any;
+
+  @Output() selectedData = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.openFoodService.getApiData().subscribe((data) => {
@@ -20,20 +27,21 @@ export class SearchComponent implements OnInit {
       console.log(this.foodList);
     });
   }
-
   // filter to remove null values from the select
   filterEmptyValues() {
-    return this.foodList.products.filter(
+    return this.foodList?.products?.filter(
       (x: any) => x.abbreviated_product_name
     );
   }
 
-  // recovering full products data from selected option
+  // recovering full products data from selected option and outputting it
   selectedValue(value: any) {
     for (let i = 0; i < this.foodList.products.length; i++) {
-      if (value.$ngOptionLabel === this.foodList.products[i].abbreviated_product_name) {
-        this.selectedData = this.foodList.products[i];
-        // console.log(this.selectedData.nutriments);
+      if (
+        value.$ngOptionLabel ===
+        this.foodList.products[i].abbreviated_product_name
+      ) {
+        this.selectedData.emit(this.foodList.products[i]);
         break;
       }
     }
