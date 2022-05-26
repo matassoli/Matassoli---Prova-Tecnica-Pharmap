@@ -3,14 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
+import { ProductComparisonComponent } from './product-comparison/product-comparison.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
-import { CardComponent } from './card/card.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, CardComponent],
+  declarations: [AppComponent, ProductComparisonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

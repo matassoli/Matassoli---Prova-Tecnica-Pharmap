@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 $highlight: #4400ff;
 $border: #cecece;
 
@@ -5,15 +7,10 @@ $border: #cecece;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 section {
   margin: 100px 50px;
   font-weight: 600;
-}
-
-html,
-body {
-  background-color: #2d3849;
 }
