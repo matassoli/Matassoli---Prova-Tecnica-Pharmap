@@ -65,6 +65,16 @@ h1 {
     td {
       padding: 8px;
       border: 2px solid $border;
+      .material-icons {
+        font-size: 1.4rem;
+        color: black;
+      }
+    }
+    .valueCell {
+      display: flex;
+      justify-content: space-between;
+      border: none;
+      align-items: center;
     }
   }
 }
