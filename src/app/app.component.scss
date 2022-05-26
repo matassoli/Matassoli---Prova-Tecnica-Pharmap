@@ -1,4 +1,8 @@
+@import "../styles.scss";
+
 h1 {
   font-size: 5rem;
   padding: 40px;
+  text-shadow: 2px 2px 3px $highlight;
+  user-select: none;
 }

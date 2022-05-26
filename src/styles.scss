@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+$primary: #8cd6ce;
 $highlight: #4400ff;
 $border: #cecece;
 
@@ -11,6 +12,6 @@ $border: #cecece;
 }
 
 section {
-  margin: 100px 50px;
+  padding: 50px;
   font-weight: 600;
 }

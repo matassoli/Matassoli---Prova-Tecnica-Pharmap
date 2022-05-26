@@ -1,8 +1,11 @@
 <section class="section-search">
     <h4>Inserisci prodotto</h4>
     <div class="search-cointainer">
-        <ng-select notFoundText="Nessun elemento trovato" [clearable]="false" (change)="selectedProduct(selected)"
-            (open)="emptyOption()" [(ngModel)]="selected">
+        <ng-select notFoundText="Nessun elemento trovato"
+            [clearable]="false"
+            (change)="selectedProduct(selected)"
+            (open)="emptyOption()"
+            [(ngModel)]="selected">
             <ng-option *ngFor="let item of filterEmptyValues()">{{item.abbreviated_product_name}}</ng-option>
         </ng-select>
     </div>
@@ -11,19 +14,17 @@
 
 <section class="section-cards">
     <ng-container *ngFor="let card of dataCards; index as i">
-
         <div class="card-container" *ngIf="card?.abbreviated_product_name">
             <div class="material-icons-container">
                 <span class="material-icons" title="Confronta" (click)="selectPrimaryCard(i)"
-                    [ngStyle]="{ color: primaryItem === i ? 'green' : 'red' }">star</span>
-                <span class="material-icons" title="Elimina" (click)="delete(i)" style="color: purple">delete</span>
+                    [ngStyle]="{ color: primaryItem === i ? '#8cd6ce' : 'red' }">star</span>
+                <span class="material-icons" title="Elimina" (click)="delete(i)" style="color: #4400ff">delete</span>
             </div>
-
             <div class="card-img"><img src={{card?.image_url}} alt=""></div>
+
             <div class="card-data-container">
                 <div class="card-data">
                     <h1>{{card?.abbreviated_product_name}}</h1>
-
                     <table cellspacing="0" cellpadding="0">
                         <tr>
                             <td width="70%">Zucchero</td>
@@ -34,8 +35,7 @@
                                     [ngStyle]="{'color': (dataCards[primaryItem]?.nutriments?.sugars_100g === card.nutriments?.sugars_100g) ? 'black' :
                                         (dataCards[primaryItem]?.nutriments?.sugars_100g > card.nutriments?.sugars_100g) ? 'green' : 'red'}">
                                     <!-- function to assign the correct comparison icon -->
-                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.sugars_100g,
-                                    card.nutriments?.sugars_100g) }}
+                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.sugars_100g, card.nutriments?.sugars_100g) }}
                                 </span>
                             </td>
                         </tr>
@@ -45,8 +45,7 @@
                                 <span class="material-icons" *ngIf="i != primaryItem"
                                     [ngStyle]="{'color': (dataCards[primaryItem]?.nutriments?.sodium_100g === card.nutriments?.sodium_100g) ? 'black' :
                                         (dataCards[primaryItem]?.nutriments?.sodium_100g > card.nutriments?.sodium_100g) ? 'green' : 'red'}">
-                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.sodium_100g,
-                                    card.nutriments?.sodium_100g) }}</span>
+                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.sodium_100g, card.nutriments?.sodium_100g) }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -55,8 +54,7 @@
                                 <span class="material-icons" *ngIf="i != primaryItem"
                                     [ngStyle]="{'color': (dataCards[primaryItem]?.nutriments?.salt_100g === card.nutriments?.salt_100g) ? 'black' :
                                         (dataCards[primaryItem]?.nutriments?.salt_100g > card.nutriments?.salt_100g) ? 'green' : 'red'}">
-                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.salt_100g,
-                                    card.nutriments?.salt_100g) }}</span>
+                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.salt_100g, card.nutriments?.salt_100g) }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -65,8 +63,7 @@
                                 <span class="material-icons" *ngIf="i != primaryItem"
                                     [ngStyle]="{'color': (dataCards[primaryItem]?.nutriments?.fat_100g === card.nutriments?.fat_100g) ? 'black' :
                                         (dataCards[primaryItem]?.nutriments?.fat_100g > card.nutriments?.fat_100g) ? 'green' : 'red'}">
-                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.fat_100g,
-                                    card.nutriments?.fat_100g) }}</span>
+                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.fat_100g, card.nutriments?.fat_100g) }}</span>
                             </td>
                         </tr>
                         <tr>
@@ -75,8 +72,7 @@
                                 <span class="material-icons" *ngIf="i != primaryItem"
                                     [ngStyle]="{'color': (dataCards[primaryItem]?.nutriments?.carbohydrates_100g === card.nutriments?.carbohydrates_100g) ? 'black' :
                                         (dataCards[primaryItem]?.nutriments?.carbohydrates_100g > card.nutriments?.carbohydrates_100g) ? 'green' : 'red'}">
-                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.carbohydrates_100g,
-                                    card.nutriments?.carbohydrates_100g) }}</span>
+                                    {{ trendingIcon(dataCards[primaryItem]?.nutriments?.carbohydrates_100g, card.nutriments?.carbohydrates_100g) }}</span>
                             </td>
                         </tr>
                     </table>
