@@ -1,11 +1,11 @@
 <section>
 
 
-    <ng-container *ngFor="let card of dataCards">
+    <ng-container *ngFor="let card of dataCards; index as i">
         <div class="card-container" *ngIf="card?.abbreviated_product_name">
             <div class="material-icons-container">
-                <span class="material-icons" style="color: red;">star</span>
-                <span class="material-icons" style="color: purple;">delete</span>
+                <span class="material-icons" title="Principale" (click)="star(i)" style="color: red">star</span>
+                <span class="material-icons" title="Cancella" (click)="delete(i)" style="color: purple">delete</span>
             </div>
             <div class="card-img"><img src={{card?.image_url}} alt=""></div>
             <div class="card-data-container">

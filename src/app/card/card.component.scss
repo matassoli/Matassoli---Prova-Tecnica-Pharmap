@@ -24,6 +24,16 @@ h1 {
     top: 0;
     right: 0;
     padding: 10px;
+    text-shadow: 1px 1px 1px black;
+
+    .material-icons {
+      font-size: 30px;
+      opacity: 0.8;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   .card-img {
@@ -47,7 +57,7 @@ h1 {
     }
   }
   table {
-    margin-top: 1.6rem;
+    margin-top: 15px;
     background-color: white;
     border-collapse: collapse;
     width: 100%;

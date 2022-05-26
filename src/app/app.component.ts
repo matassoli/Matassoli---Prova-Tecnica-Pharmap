@@ -8,8 +8,13 @@ import { Component, Input } from '@angular/core';
 export class AppComponent {
   title = 'foody';
   selectedData = [];
+  deletedItem = [];
 
   addItem(newItem: any) {
     this.selectedData = newItem;
+  }
+
+  addRemovedItem(newItem: any) {
+    this.deletedItem = newItem;
   }
 }

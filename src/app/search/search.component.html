@@ -1,8 +1,8 @@
 <section>
     <h4>Inserisci prodotto</h4>
     <div class="search-cointainer">
-        <ng-select notFoundText="Nessun elemento trovato" [clearable]="false" [hideSelected]=true
-            (change)="selectedValue(selected)" (open)="emptyOption()" [(ngModel)]="selected">
+        <ng-select notFoundText="Nessun elemento trovato" [clearable]="false" (change)="selectedValue(selected)"
+            (open)="emptyOption()" [(ngModel)]="selected">
             <ng-option *ngFor="let item of filterEmptyValues()">{{item.abbreviated_product_name}}</ng-option>
         </ng-select>
     </div>

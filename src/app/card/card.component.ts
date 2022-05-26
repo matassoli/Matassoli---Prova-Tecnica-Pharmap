@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -7,18 +7,26 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() selectedData: any = [];
+  @Output() deletedItem = new EventEmitter<string>();
+
   dataCards: any[] = [];
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  // populate the cards after picking an option from the searchbar
   ngOnChanges(): void {
-    console.log();
     if (this.selectedData.length != 0) {
       this.dataCards.push(this.selectedData);
     }
-    // console.log('selectedData', this.selectedData);
-    console.log(this.dataCards);
+  }
+
+  star(idx: number) {}
+
+  // deleting the card and outputting the delete value to reinsert the value on the select
+  delete(idx: number) {
+    this.deletedItem.emit(this.dataCards[idx]);
+    this.dataCards.splice(idx, 1);
   }
 }
