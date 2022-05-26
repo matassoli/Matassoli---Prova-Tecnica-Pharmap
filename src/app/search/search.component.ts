@@ -28,9 +28,10 @@ export class SearchComponent implements OnInit {
       this.foodList = data;
     });
   }
-  // reinserting the deleted value to the select after clicking on delete icon
+  // reinserting the deleted value and ordering the select after clicking on delete icon
   ngOnChanges(): void {
     this.foodList?.products?.push(this.deletedItem);
+    this.foodList?.products?.sort((a: any, b: any) => a.id - b.id);
   }
   // filter to remove null values from the .json for consistency reasons
   filterEmptyValues() {

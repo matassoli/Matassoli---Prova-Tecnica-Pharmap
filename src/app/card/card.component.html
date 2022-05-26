@@ -1,65 +1,73 @@
 <section>
-
-
     <ng-container *ngFor="let card of dataCards; index as i">
+
         <div class="card-container" *ngIf="card?.abbreviated_product_name">
             <div class="material-icons-container">
-                <span class="material-icons" title="Confronta" (click)="star(i)" style="color: red">star</span>
-                <span class="material-icons" title="Elimina" (click)="delete(i)" style="color: purple">delete</span>
+                <span class="material-icons" title="Confronta"
+                    (click)="selectPrimaryCard(i)"
+                    [ngStyle]="{ color: comparisonItem === i ? 'green' : 'red' }">star</span>
+                <span class="material-icons" title="Elimina"
+                    (click)="delete(i)" style="color: purple">delete</span>
             </div>
+
             <div class="card-img"><img src={{card?.image_url}} alt=""></div>
             <div class="card-data-container">
                 <div class="card-data">
                     <h1>{{card?.abbreviated_product_name}}</h1>
+
                     <table cellspacing="0" cellpadding="0">
                         <tr>
                             <td width="70%">Zucchero</td>
+                            <!-- pipe to use only the first 2 decimal digits -->
                             <td class="valueCell">{{card?.nutriments?.sugars_100g | number : '1.0-2'}}g
-                                <span class="material-icons" *ngIf="i != 0"
-                                    [ngStyle]="{'color': (dataCards[0]?.nutriments?.sugars_100g > dataCards[i]?.nutriments?.sugars_100g) ? 'green' : 'red'}">
-                                    {{dataCards[0]?.nutriments?.sugars_100g
-                                    > dataCards[i]?.nutriments?.sugars_100g ?
-                                    "trending_down" : "trending_up"}}</span>
+                                <!-- styling comparison icons when comparing cards, black for same value, red for lower and green for higher -->
+                                <span class="material-icons" *ngIf="i != comparisonItem"
+                                    [ngStyle]="{'color': (dataCards[comparisonItem]?.nutriments?.sugars_100g === card.nutriments?.sugars_100g) ? 'black' :
+                                        (dataCards[comparisonItem]?.nutriments?.sugars_100g > card.nutriments?.sugars_100g) ? 'green' : 'red'}">
+                                        <!-- function to assign the correct comparison icon -->
+                                    {{ trendingIcon(dataCards[comparisonItem]?.nutriments?.sugars_100g, card.nutriments?.sugars_100g) }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Sodio</td>
-                            <td class="valueCell">{{card?.nutriments?.sodium_100g | number : '1.0-2'}}g <span
-                                    class="material-icons" *ngIf="i != 0"
-                                    [ngStyle]="{'color': (dataCards[0]?.nutriments?.sodium_100g > dataCards[i]?.nutriments?.sodium_100g) ? 'green' : 'red'}">{{dataCards[0]?.nutriments?.sodium_100g
-                                    > dataCards[i]?.nutriments?.sodium_100g ?
-                                    "trending_down" : "trending_up"}}</span>
+                            <td class="valueCell">{{card?.nutriments?.sodium_100g | number : '1.0-2'}}g
+                                <span class="material-icons" *ngIf="i != comparisonItem"
+                                    [ngStyle]="{'color': (dataCards[comparisonItem]?.nutriments?.sodium_100g === card.nutriments?.sodium_100g) ? 'black' :
+                                        (dataCards[comparisonItem]?.nutriments?.sodium_100g > card.nutriments?.sodium_100g) ? 'green' : 'red'}">
+                                    {{ trendingIcon(dataCards[comparisonItem]?.nutriments?.sodium_100g, card.nutriments?.sodium_100g) }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td>Sale</td>
-                            <td class="valueCell">{{card?.nutriments?.salt_100g | number : '1.0-2'}}g <span class="material-icons"
-                                    *ngIf="i != 0"
-                                    [ngStyle]="{'color': (dataCards[0]?.nutriments?.salt_100g > dataCards[i]?.nutriments?.salt_100g) ? 'green' : 'red'}">
-                                    {{dataCards[0]?.nutriments?.salt_100g > dataCards[i]?.nutriments?.salt_100g ? "trending_down" : "trending_up"}}</span></td>
+                            <td class="valueCell">{{card?.nutriments?.salt_100g | number : '1.0-2'}}g
+                                <span class="material-icons" *ngIf="i != comparisonItem"
+                                    [ngStyle]="{'color': (dataCards[comparisonItem]?.nutriments?.salt_100g === card.nutriments?.salt_100g) ? 'black' :
+                                        (dataCards[comparisonItem]?.nutriments?.salt_100g > card.nutriments?.salt_100g) ? 'green' : 'red'}">
+                                    {{ trendingIcon(dataCards[comparisonItem]?.nutriments?.salt_100g, card.nutriments?.salt_100g) }}</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Grassi</td>
-                            <td class="valueCell">{{card?.nutriments?.fat_100g | number : '1.0-2'}}g <span class="material-icons"
-                                    *ngIf="i != 0"
-                                    [ngStyle]="{'color': (dataCards[0]?.nutriments?.fat_100g > dataCards[i]?.nutriments?.fat_100g) ? 'green' : 'red'}">{{dataCards[0]?.nutriments?.fat_100g
-                                    > dataCards[i]?.nutriments?.fat_100g ?
-                                    "trending_down" : "trending_up"}}</span></td>
+                            <td class="valueCell">{{card?.nutriments?.fat_100g | number : '1.0-2'}}g
+                                <span class="material-icons" *ngIf="i != comparisonItem"
+                                    [ngStyle]="{'color': (dataCards[comparisonItem]?.nutriments?.fat_100g === card.nutriments?.fat_100g) ? 'black' :
+                                        (dataCards[comparisonItem]?.nutriments?.fat_100g > card.nutriments?.fat_100g) ? 'green' : 'red'}">
+                                    {{ trendingIcon(dataCards[comparisonItem]?.nutriments?.fat_100g, card.nutriments?.fat_100g) }}</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>Carboidrati</td>
-                            <td class="valueCell">{{card?.nutriments?.carbohydrates_100g | number : '1.0-2'}}g <span class="material-icons"
-                                    *ngIf="i != 0"
-                                    [ngStyle]="{'color': (dataCards[0]?.nutriments?.carbohydrates_100g > dataCards[i]?.nutriments?.carbohydrates_100g) ? 'green' : 'red'}">{{dataCards[0]?.nutriments?.carbohydrates_100g
-                                    > dataCards[i]?.nutriments?.carbohydrates_100g ?
-                                    "trending_down" : "trending_up"}}</span></td>
+                            <td class="valueCell">{{card?.nutriments?.carbohydrates_100g | number : '1.0-2'}}g
+                                <span class="material-icons" *ngIf="i != comparisonItem"
+                                    [ngStyle]="{'color': (dataCards[comparisonItem]?.nutriments?.carbohydrates_100g === card.nutriments?.carbohydrates_100g) ? 'black' :
+                                        (dataCards[comparisonItem]?.nutriments?.carbohydrates_100g > card.nutriments?.carbohydrates_100g) ? 'green' : 'red'}">
+                                    {{ trendingIcon(dataCards[comparisonItem]?.nutriments?.carbohydrates_100g, card.nutriments?.carbohydrates_100g) }}</span>
+                            </td>
                         </tr>
                     </table>
-                </div>
 
+                </div>
             </div>
         </div>
     </ng-container>
-
-
 </section>
