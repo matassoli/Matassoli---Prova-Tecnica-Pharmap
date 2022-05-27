@@ -77,6 +77,19 @@
       flex-basis: 100%;
     }
   }
+  .search-cointainer {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .section-search {
+    .search-cointainer {
+      width: 250px;
+      .ng-option {
+        padding: 5px !important;
+      }
+    }
+  }
 }
 
 .section-cards {
@@ -88,6 +101,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-shadow: 1px 1px $highlight;
+    font-size: 1.2em;
   }
 
   .card-container {

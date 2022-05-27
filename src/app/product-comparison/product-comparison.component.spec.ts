@@ -1,15 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductComparisonComponent } from './product-comparison.component';
+import { HttpClientModule } from '@angular/common/http';
 
-describe('SearchComponent', () => {
+describe('ProductComparisonComponent', () => {
   let component: ProductComparisonComponent;
   let fixture: ComponentFixture<ProductComparisonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductComparisonComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductComparisonComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

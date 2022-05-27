@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { OpenFoodService } from './openfood.service';
 
-import { OpenfoodService } from './openfood.service';
-
-describe('OpenfoodService', () => {
-  let service: OpenfoodService;
+describe('OpenFoodService', () => {
+  let service: OpenFoodService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(OpenfoodService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+    });
+    service = TestBed.inject(OpenFoodService);
   });
 
   it('should be created', () => {
